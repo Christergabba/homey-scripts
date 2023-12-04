@@ -15,7 +15,7 @@ let failedDevices = []; // List to track failed devices
 // Initial pass: Try to control all lights once
 for (const device of Object.values(devices)) {
   if (device.class === 'light' || device.virtualClass === 'light') {
-    if (device.zone === '9eb2975d-49ea-4033-8db0-105a3e982117' || device.zone === '317258f8-5231-4498-91ee-5ee1e9b2708a') {
+    if (device.zoneName.toLowerCase().includes("stua") || device.zoneName.toLowerCase().includes("spisestue")) {
       log(`\nAttempting to turn '${device.name}' ${onOff.value ? 'on' : 'off'}...`);
       try {
         await device.setCapabilityValue('onoff', onOff.value);
